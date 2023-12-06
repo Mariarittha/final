@@ -1,2 +1,30 @@
 {% extends 'base_logada.html' %}
 {% load static %}
+
+
+{% block body %}
+<br><br>
+
+<h3 class="m-3 text-center">Excluir Filomena</h3>
+
+<div class="m-3 text-center">
+
+    <form method="post">
+        <section class="form container-fluid p-5x ">
+            {% csrf_token %}
+
+                <p> Você tem certeza que quer apagar esta filomena?</p>
+                {{ form }}
+        </section>
+       
+        <button class="btn btn-danger " type="submit"> Confirmar</button>
+        
+            </div>
+
+
+
+    </form>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+
+{% endblock %}

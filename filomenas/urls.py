@@ -25,8 +25,10 @@ urlpatterns = [
 
     path('forms/', views.forms.as_view(), name="forms"),
  
-    
-    path('atualizar/<int:pk>/', views.AtualizarEstadia.as_view(), name="atuar"),
+    path('apagar/<int:pk>/', views.Apagarfilomena.as_view(), name='apagar'),
+    path('apagarestadia/<int:pk>/', views.ApagarEstadia.as_view(), name='apagarestadia'),
+
+    path('atualizar/<int:pk>/', views.AtualizarEstadia.as_view(), name="atua"),
     path('atualizar_hosp/<int:pk>/', views.Atualizarhospede.as_view(), name="atuar_hospede"),
     
 
