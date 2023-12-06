@@ -33,6 +33,12 @@ class ListarEstadia(LoginRequiredMixin, generic.ListView):
     template_name = 'estadia/listar.html'
     context_object_name = 'estadias'
     paginate_by = 5
+
+class ListarEstadiafilo(LoginRequiredMixin, generic.ListView):
+    model = estadia
+    template_name = 'filomenas/listar.html'
+    context_object_name = 'estadia'
+    paginate_by = 5
     
 class ListarEstadianao( generic.ListView):
     model = estadia
@@ -53,7 +59,7 @@ class CriarEstadia(LoginRequiredMixin, views.SuccessMessageMixin, generic.Create
     model = estadia
     form_class = EstadiaForm
     template_name = 'estadia/form.html'
-    success_url = reverse_lazy("filomenas:home")
+    success_url = reverse_lazy("filomenas:listar_log")
     success_message = "Estadia cadastrada com sucesso!"
 
 class AtualizarEstadia(LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):

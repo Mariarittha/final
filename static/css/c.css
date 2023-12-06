@@ -79,7 +79,7 @@ header ul li:hover a::after {
 
 
 .btn{
-    background-color: #E28743;
+    background-color: hsl(26, 73%, 57%);
     color: white;
     padding: 15px 20px;
     border-radius: 10px;

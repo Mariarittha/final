@@ -1,4 +1,4 @@
-{% extends 'base_logada.html' %}
+{% extends 'base_nao.html' %}
 {% load static %}
 
 
@@ -11,6 +11,7 @@ Detalhe_estadia
 {% endblock %}
 
 {% block body %}
+
 <style>
     .product-container {
         background-color: #fff;
@@ -27,6 +28,9 @@ Detalhe_estadia
     }
     .text-orange{
         color: #E28743;
+    }
+    .text-orangee{
+background-color: #E28743;
     }
     .product-price {
         font-size: 1.5rem;
@@ -57,10 +61,13 @@ Detalhe_estadia
                 <p class="localizacao"><strong>Localização:</strong> {{ estadia.localizacao }}</p>
                 <p class="programacao"><strong>Programação:</strong> {{ estadia.programacao }}</p>
                 <hr>
-                <a href="{% url 'account_login' %}" class="btn btn-success btn-buy">Comprar</a>
-                <a href="#" class="btn btn-secondary btn-back">Voltar</a>
+                <a href="{% url 'account_login' %}" class="btn text-orangee btn-buy">Comprar</a>
+                <a href="{% url 'filomenas:listar_nao' %}" class="btn btn-secondary btn-back">Voltar</a>
             </div>
         </div>
     </div>
 </div>
+
+
+
 {% endblock %}

@@ -14,6 +14,7 @@ urlpatterns = [
     path('perfil/', views.perfil.as_view(), name="perfil"),
     
     path('listar/', views.ListarEstadia.as_view(), name="listar_log"),
+    path('listarfilo/', views.ListarEstadiafilo.as_view(), name="listar_filo"),
     path('listar_nao/', views.ListarEstadianao.as_view(), name="listar_nao"),
     path('detalhar/<int:pk>/', views.DetalharEstadia.as_view(), name="detalhar"),
     path('detalhar_log/<int:pk>/', views.Detalharestadialog.as_view(), name="detalhar_log"),
