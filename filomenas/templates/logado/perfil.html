@@ -47,6 +47,8 @@
             </form>
 
             <hr>
+           
+            <a href=" {% url 'filomenas:detalhar' pk=estadia.pk %}" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Sair</a>
 
             <a href="{% url 'account_logout' %}" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Sair</a>
         </div>
