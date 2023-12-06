@@ -1,5 +1,4 @@
 from django.contrib import messages
-from django.views.generic import ListView,CreateView,DeleteView,DetailView, UpdateView,TemplateView
 from django.views import generic
 from django.urls import reverse_lazy
 from django.contrib.messages import views
@@ -12,7 +11,6 @@ from .models import estadia, Produtos, filomenas, hospede
 
 class Home(generic.TemplateView):
     template_name = "nao/home.html"
-
 
 # logado
 
@@ -68,10 +66,6 @@ class AtualizarEstadia(LoginRequiredMixin, views.SuccessMessageMixin, generic.Up
     template_name = "estadia/form.html"
     success_url = reverse_lazy("filomenas:listar_filo")
     success_message = "Estadia atualizada com sucesso!"
-    
-    def get_object(self, queryset=None):
-        return estadia.objects.get(pk=self.kwargs['pk'])
-
 
 class ApagarEstadia(LoginRequiredMixin, generic.DeleteView):
     model = estadia
