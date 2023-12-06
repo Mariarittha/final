@@ -2,56 +2,9 @@
 {% load static %}
 
 {% block body %}
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
 
-            <table class="table table-bordered">
-                <thead class="table-orange">
-                    <tr>
-                        <th scope="col">Campo</th>
-                        <th scope="col">Informação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Nome</th>
-                        <td>{{ hospede.nome }}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Profissão</th>
-                        <td>{{ hospede.profissao }}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Email</th>
-                        <td>{{ hospede.email }}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Idade</th>
-                        <td>{{ hospede.idade }}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Telefone</th>
-                        <td>{{ hospede.telefone }}</td>
-                    </tr>
-                    <!-- Adicione mais campos conforme necessário -->
-                </tbody>
-            </table>
-            <a href="#">Editar</a>
-
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-
-                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-            </form>
-
-            <hr>
-           
-            <a href=" {% url 'filomenas:detalhar' pk=estadia.pk %}" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Sair</a>
-
-            <a href="{% url 'account_logout' %}" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Sair</a>
-        </div>
-    </div>
-</div>
+         
+      
+  <a href="{% url 'account_logout' %}" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Sair</a>
+         
 {% endblock %}

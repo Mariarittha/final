@@ -28,6 +28,9 @@ Detalhe_estadia
     .text-orange{
         color: #E28743;
     }
+    .text-orangee{
+background-color: #E28743;
+    }
     .product-price {
         font-size: 1.5rem;
         color: #E28743; /* verde */
@@ -57,10 +60,15 @@ Detalhe_estadia
                 <p class="localizacao"><strong>Localização:</strong> {{ estadia.localizacao }}</p>
                 <p class="programacao"><strong>Programação:</strong> {{ estadia.programacao }}</p>
                 <hr>
-                <a href="#" class="btn btn-success btn-buy">Comprar</a>
-                <a href="#" class="btn btn-secondary btn-back">Voltar</a>
+                <a href="#" class="btn text-orangee btn-buy">Comprar</a>
+                <a href="{% url 'filomenas:listar_log' %}" class="btn btn-secondary btn-back">Voltar</a>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+
 {% endblock %}

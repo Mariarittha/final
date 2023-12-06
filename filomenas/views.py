@@ -33,6 +33,12 @@ class ListarEstadia(LoginRequiredMixin, generic.ListView):
     template_name = 'estadia/listar.html'
     context_object_name = 'estadias'
     paginate_by = 5
+
+class ListarEstadiafilo(LoginRequiredMixin, generic.ListView):
+    model = estadia
+    template_name = 'filomenas/listar_estadia.html'
+    context_object_name = 'estadias'
+    paginate_by = 5
     
 class ListarEstadianao( generic.ListView):
     model = estadia
@@ -53,19 +59,25 @@ class CriarEstadia(LoginRequiredMixin, views.SuccessMessageMixin, generic.Create
     model = estadia
     form_class = EstadiaForm
     template_name = 'estadia/form.html'
-    success_url = reverse_lazy("filomenas:home")
+    success_url = reverse_lazy("filomenas:listar_log")
     success_message = "Estadia cadastrada com sucesso!"
 
 class AtualizarEstadia(LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
     model = estadia
     form_class = EstadiaForm
-    success_url = reverse_lazy("filomenas:home2")
+    template_name = "estadia/form.html"
+    success_url = reverse_lazy("filomenas:listar_filo")
     success_message = "Estadia atualizada com sucesso!"
+    
+    def get_object(self, queryset=None):
+        return estadia.objects.get(pk=self.kwargs['pk'])
+
 
 class ApagarEstadia(LoginRequiredMixin, generic.DeleteView):
     model = estadia
-    success_url = reverse_lazy("filomenas:home")
-    
+    success_url = reverse_lazy("filomenas:listar_filo")
+    success_message = "Estadia removida com sucesso!"
+    template_name = "filomenas/apagar.html" 
     
 # CRUD de perfil do hospede 
 
@@ -116,5 +128,7 @@ class Atualizarfilomena(LoginRequiredMixin, views.SuccessMessageMixin, generic.U
     success_message = "Perfil atualizado com sucesso, {{ request.user.username }}!" 
 
 class Apagarfilomena(LoginRequiredMixin, generic.DeleteView):
+    template_name = "reservas/apagar.html"
+    success_message = "Filomena removida com sucesso!"
     model = filomenas
     success_url = reverse_lazy("filomenas:home")
