@@ -10,6 +10,7 @@
 body{
     background-color: #E28743;
 
+
 }
 section,
 footer{
@@ -197,4 +198,51 @@ header ul li a{
 nav.scrolled {
     background-color: #E28743; /* Sua cor desejada */
     transition: background-color 0.3s ease; /* Adicionando uma transição suave */
+}
+
+nav, ul {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 0;
+}
+
+.sobre {
+    background-color: #E28743;
+}
+
+
+.login input[type="text"],
+.login input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+/* Estilos para o botão */
+.login button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.login {
+    display: grid;
+    grid-template-columns: repeat(2);
+}
+.titulo {  
+    padding: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color:#E28743;
+    width: 100%;
+}
+
+#titulos {
+    margin-left: 8px;
 }

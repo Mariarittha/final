@@ -1,2 +1,59 @@
 {% extends 'base_nao.html' %}
 {% load static %}
+
+{% block body %}
+
+<div style="position: relative; text-align: center;">
+    <img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px);" />
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;">
+        <h1 style="color: white; font-size: 2.5em;">FILOMENAS: ROTA DO QUILOMBO</h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 d-flex align-items-center justify-content-center align-content-center">
+            <div class="p-4 text-center">
+                <p class="text-justify"><em>As feiras de terreiro de mulheres negras são eventos especiais realizados em espaços sagrados, como 
+                    terreiros de candomblé e umbanda. Elas combinam espiritualidade, cultura e empreendedorismo. 
+                    Nestes locais, mulheres líderes compartilham produtos, artefatos e conhecimentos ancestrais relacionados
+                    à religiosidade afro-brasileira. Esses eventos não apenas promovem a venda de itens, mas também celebram a
+                    cultura, oferecem palestras, vivências e rituais, além de preservarem e divulgarem as tradições culturais. 
+                    As feiras de terreiro são encontros de valorização, resistência e celebração, fortalecendo a identidade e a 
+                    comunidade afrodescendente.</em></p>
+            </div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+            <div class="p-4 text-center">
+                <img src="{% static 'img/filomenas.jpeg' %}" alt="ESTAMPA" class="img-fluid rounded-circle" style="max-width: 400px;">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <iframe src="https://www.google.com/maps/d/u/2/embed?mid=1rAjBOm-sC9weuVxNjRJ9Dh6pgkR3G_0&ehbc=2E312F&noprof=1" width="100%" height="380"></iframe>
+        </div>
+        <div class="col-md-6">
+            <div class="titulo">
+                <h2 id="titulos" style="color: white;">LOCALIZAÇÃO</h2>
+            </div>
+            <div class="textos p-4">
+                <p class="text-justify"><em>As feiras de terreiro de mulheres negras são eventos especiais realizados em espaços sagrados, como 
+                    terreiros de candomblé e umbanda. Elas combinam espiritualidade, cultura e empreendedorismo. 
+                    Nestes locais, mulheres líderes compartilham produtos, artefatos e conhecimentos ancestrais relacionados
+                    à religiosidade afro-brasileira. Esses eventos não apenas promovem a venda de itens, mas também celebram a
+                    cultura, oferecem palestras, vivências e rituais, além de preservarem e divulgarem as tradições culturais. 
+                    As feiras de terreiro são encontros de valorização, resistência e celebração, fortalecendo a identidade e a 
+                    comunidade afrodescendente.</em></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+ 
+
+{% endblock %}

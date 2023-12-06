@@ -97,6 +97,10 @@ class Detalharfilomena(generic.DetailView):
     model = hospede
     template_name = 'filomenas/detalhar_filo.html'
 
+class Listarfilomena(LoginRequiredMixin, generic.ListView):
+    model = filomenas
+    context_object_name = 'filomenas'
+    paginate_by = 5
 
 class Criarfilomena(LoginRequiredMixin, views.SuccessMessageMixin, generic.CreateView):
     model = filomenas
