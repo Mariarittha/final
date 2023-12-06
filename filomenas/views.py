@@ -59,18 +59,19 @@ class CriarEstadia(LoginRequiredMixin, views.SuccessMessageMixin, generic.Create
 class AtualizarEstadia(LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
     model = estadia
     form_class = EstadiaForm
-    success_url = reverse_lazy("reservas:home2")
+    success_url = reverse_lazy("filomenas:home2")
     success_message = "Estadia atualizada com sucesso!"
 
 class ApagarEstadia(LoginRequiredMixin, generic.DeleteView):
     model = estadia
-    success_url = reverse_lazy("reservas:home")
+    success_url = reverse_lazy("filomenas:home")
     
     
 # CRUD de perfil do hospede 
 
 class Detalharhospede(generic.DetailView):
     model = hospede
+    template_name = "perfil/form_hospede.html"
 
 class Criarhospede(LoginRequiredMixin, views.SuccessMessageMixin, generic.CreateView):
     model = hospede
@@ -82,12 +83,13 @@ class Criarhospede(LoginRequiredMixin, views.SuccessMessageMixin, generic.Create
 class Atualizarhospede(LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
     model = hospede
     form_class = HospedeForm
-    success_url = reverse_lazy("reservas:home")
-    success_message = "Perfil atualizado com sucesso, {{ request.user.username }}!" 
+    template_name = "perfil/form_hospede.html"
+    success_url = reverse_lazy("filomenas:perfil")
+    success_message = "Perfil atualizado com sucesso"
 
 class Apagarhospede(LoginRequiredMixin, generic.DeleteView):
     model = hospede
-    success_url = reverse_lazy("reservas:home")
+    success_url = reverse_lazy("filomenas:home")
     
 # CRUD de perfil filomenas
 
@@ -106,9 +108,9 @@ class Criarfilomena(LoginRequiredMixin, views.SuccessMessageMixin, generic.Creat
 class Atualizarfilomena(LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
     model = filomenas
     form_class = FilomenasForm
-    success_url = reverse_lazy("reservas:home")
+    success_url = reverse_lazy("filomenas:home")
     success_message = "Perfil atualizado com sucesso, {{ request.user.username }}!" 
 
 class Apagarfilomena(LoginRequiredMixin, generic.DeleteView):
     model = filomenas
-    success_url = reverse_lazy("reservas:home")
+    success_url = reverse_lazy("filomenas:home")

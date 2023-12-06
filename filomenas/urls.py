@@ -25,7 +25,8 @@ urlpatterns = [
     path('forms/', views.forms.as_view(), name="forms"),
  
     
-    path('atualizar/', views.AtualizarEstadia.as_view(), name="atuar"),
-     
+    path('atualizar/<int:pk>/', views.AtualizarEstadia.as_view(), name="atuar"),
+    path('atualizar_hosp/<int:pk>/', views.Atualizarhospede.as_view(), name="atuar_hospede"),
+    
 
 ]
