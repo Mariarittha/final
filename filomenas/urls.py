@@ -15,8 +15,8 @@ urlpatterns = [
     
     path('listar/', views.ListarEstadia.as_view(), name="listar_log"),
     path('listar_nao/', views.ListarEstadianao.as_view(), name="listar_nao"),
-    path('detalhar/', views.DetalharEstadia.as_view(), name="detalhar"),
-    path('detalhar_log/', views.Detalharestadialog.as_view(), name="detalhar_log"),
+    path('detalhar/<int:pk>/', views.DetalharEstadia.as_view(), name="detalhar"),
+    path('detalhar_log/<int:pk>/', views.Detalharestadialog.as_view(), name="detalhar_log"),
     path('criar/', views.CriarEstadia.as_view(), name="criar"),
     
     path('criar_hospede/', views.Criarhospede.as_view(), name="criar_hospede"),

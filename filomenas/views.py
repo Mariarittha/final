@@ -59,7 +59,7 @@ class CriarEstadia(LoginRequiredMixin, views.SuccessMessageMixin, generic.Create
 class AtualizarEstadia(LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
     model = estadia
     form_class = EstadiaForm
-    success_url = reverse_lazy("reservas:home")
+    success_url = reverse_lazy("reservas:home2")
     success_message = "Estadia atualizada com sucesso!"
 
 class ApagarEstadia(LoginRequiredMixin, generic.DeleteView):

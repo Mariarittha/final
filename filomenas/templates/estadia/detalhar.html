@@ -1,0 +1,66 @@
+{% extends 'base_logada.html' %}
+{% load static %}
+
+
+{% block title %}
+Detalhe_estadia
+{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<style>
+    .product-container {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+    }
+
+    .product-image {
+        border-radius: 10px 0 0 10px;
+    }
+
+    .product-info {
+        padding: 20px;
+    }
+    .text-orange{
+        color: #E28743;
+    }
+    .product-price {
+        font-size: 1.5rem;
+        color: #E28743; /* verde */
+    }
+
+    .product-description {
+        margin-top: 20px;
+    }
+
+    .btn-buy, .btn-back {
+        width: 100%;
+        margin-top: 20px;
+    }
+</style> 
+<div class="m-4">
+    <div class="container product-container">
+        <h2 class="p-3 mb-5  text-orange">Estadia: {{ estadia.nome_estadia }}</h2>
+        <hr>
+        <div class="row">
+            <div class="col-md-6 product-image">
+                <img src="{{ estadia.imagem.url }}" alt="Imagem" class="img-fluid rounded-top">
+            </div>
+            <div class="col-md-6 product-info">
+                <p class="product-price"><strong>Valor:</strong> R$ {{ estadia.valor }}</p>
+                <p class="duracao"><strong>Duração:</strong> {{ estadia.duracao }} dias</p>
+                <p class="product-description"><strong>Descrição:</strong> {{ estadia.descricao_estadia }}</p>
+                <p class="localizacao"><strong>Localização:</strong> {{ estadia.localizacao }}</p>
+                <p class="programacao"><strong>Programação:</strong> {{ estadia.programacao }}</p>
+                <hr>
+                <a href="{% url 'account_login' %}" class="btn btn-success btn-buy">Comprar</a>
+                <a href="#" class="btn btn-secondary btn-back">Voltar</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

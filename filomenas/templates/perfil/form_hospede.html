@@ -1,0 +1,46 @@
+{% extends 'base_logada.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6 mb-3">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label for="nome" class="form-label  text-h1"><strong>Nome:</strong></label>
+                    <input type="text" class="form-control" id="nome" name="nome">
+                </div>
+
+                <div class="mb-3">
+                    <label for="profissao" class="form-label text-h1"><strong>Profissão:</strong></label>
+                    <input type="text" class="form-control" id="profissao" name="profissao">
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label  text-h1"><strong>Email:</strong></label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+
+                <div class="mb-3">
+                    <label for="idade" class="form-label  text-h1"><strong>Idade:</strong></label>
+                    <input type="number" class="form-control" id="idade" name="idade">
+                </div>
+
+                <div class="mb-3">
+                    <label for="imagem_perfil" class="form-label  text-h1"><strong>Imagem de Perfil:</strong></label>
+                    <input type="file" class="form-control" id="imagem_perfil" name="imagem_perfil">
+                </div>
+
+                <div class="text-center m-4">
+                    <a href="{% url 'filomenas:home' %}" class="btn btn-secondary">Voltar</a>
+                    <button type="submit" class="btn w3-brown">Enviar</button>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock body %}

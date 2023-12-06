@@ -1,0 +1,54 @@
+{% extends 'base_nao.html' %}
+{% load static %}
+
+
+
+{% block body %}
+    
+  <!-- {% if messages %}
+    {% for message in messages %}
+      <div{% if message.tags %} class="{{ message.tags }} p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3 m-4 text-center"{% endif %}>
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %} -->
+
+  <div class="container text-center">
+    <div class="row row-cols-2 mt-3">
+      {% for estadia in estadias %}
+        <div class="col-md-4">
+          <div class="m-5">
+            <div class="card" style="width: 18rem;">
+              <img src="{{ estadia.imagem.url }}" alt="Imagem da Estadia" >
+              <div class="card-body">
+                <h5 class="card-title">Nome da Estadia: <strong>{{ estadia.nome_estadia }}</strong></h5>
+                <p class="card-text">Descrição: {{ estadia.descricao_estadia }}</p>
+                <a href="{% url 'filomenas:detalhar' pk=estadia.pk %}" class="btn btn-secondary">comprar</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <div class="col-md-12">
+          <p class="text-h1">Não existem estadias cadastradas.</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="container text-center">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <div class="w3-bar">
+          <!-- Código de paginação -->
+          <!-- ... -->
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>
+
+{% endblock body %}
+    
