@@ -83,7 +83,7 @@ class Criarhospede(LoginRequiredMixin, views.SuccessMessageMixin, generic.Create
     model = hospede
     form_class = HospedeForm
     template_name = 'perfil/form_hospede.html'
-    success_url = reverse_lazy("filomenas:home")
+    success_url = reverse_lazy("filomenas:perfil")
     success_message = "Hospede cadastrado com sucesso!"
 
 class Atualizarhospede(LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):

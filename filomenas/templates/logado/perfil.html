@@ -2,10 +2,59 @@
 {% load static %}
 
 {% block body %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <!-- Imagem de perfil redonda -->
+            <div class="text-center">
+                <img src="{% if user.hospede.imagem_perfil %}{{ user.hospede.imagem_perfil.url }}{% else %}{% static 'img/default_profile.png' %}{% endif %}" alt="Imagem de Perfil" class="img-fluid rounded-circle">
+            </div>
+        </div>
+        <div class="col-md-9">
+            <h2>{{ user.hospede.nome }}</h2>
+            <p>Profissão: {{ user.hospede.profissao }}</p>
+            <p>Email: {{ user.hospede.email }}</p>
+            <p>Idade: {{ user.hospede.idade }}</p>
+            <p>Telefone: {{ user.hospede.telefone }}</p>
+        </div>
+    </div>
 
-         
-  <img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 40px;" />
+    <hr>
 
-  <a href="{% url 'account_logout' %}" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Sair</a>
-         
-{% endblock %}
+    <h3>Editar Perfil</h3>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="nome" class="form-label text-h1"><strong>Nome:</strong></label>
+            <input type="text" class="form-control" id="nome" name="nome" value="{{ user.hospede.nome }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="profissao" class="form-label text-h1"><strong>Profissão:</strong></label>
+            <input type="text" class="form-control" id="profissao" name="profissao" value="{{ user.hospede.profissao }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label text-h1"><strong>Email:</strong></label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ user.hospede.email }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="idade" class="form-label text-h1"><strong>Idade:</strong></label>
+            <input type="number" class="form-control" id="idade" name="idade" value="{{ user.hospede.idade }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="imagem_perfil" class="form-label text-h1"><strong>Imagem de Perfil:</strong></label>
+            <input type="file" class="form-control" id="imagem_perfil" name="imagem_perfil">
+        </div>
+
+        <div class="text-center m-4">
+            <a href="{% url 'account_logout' %}" class="btn btn-danger">Sair</a>
+            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        </div>
+    </form>
+</div>
+
+{% endblock body %}
