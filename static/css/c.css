@@ -207,10 +207,6 @@ nav, ul {
     padding: 0;
 }
 
-.sobre {
-    background-color: #E28743;
-}
-
 
 .login input[type="text"],
 .login input[type="password"] {
@@ -238,11 +234,6 @@ nav, ul {
 }
 .titulo {  
     padding: 10px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    background-color:#E28743;
+    font-family: Impact, sans-serif;
     width: 100%;
-}
-
-#titulos {
-    margin-left: 8px;
 }
