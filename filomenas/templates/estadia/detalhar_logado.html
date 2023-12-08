@@ -11,6 +11,8 @@ Detalhe_estadia
 {% endblock %}
 
 {% block body %}
+<img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 40px;" />
+
 <style>
     .product-container {
         background-color: #fff;
@@ -56,7 +58,7 @@ background-color: #E28743;
             <div class="col-md-6 product-info">
                 <p class="product-price"><strong>Valor:</strong> R$ {{ estadia.valor }}</p>
                 <p class="duracao"><strong>Duração:</strong> {{ estadia.duracao }} dias</p>
-                <p class="product-description"><strong>Descrição:</strong> {{ estadia.descricao_estadia }}</p>
+                <p class="product-description"><strong>Descrição:</strong> {{ estadia.descricao_estadia }} <br></p>
                 <p class="localizacao"><strong>Localização:</strong> {{ estadia.localizacao }}</p>
                 <p class="programacao"><strong>Programação:</strong> {{ estadia.programacao }}</p>
                 <hr>

@@ -5,14 +5,15 @@
 <img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 40px;" />
 <div class="card" style="width: 18rem;">
     {% for filomena in filomenas %}
-        <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title"> {{ filomena.nome }}<</h5>
+        <h5 class="card-title"> {{ filomena.nome }}</h5>
         </div>
         <ul class="list-group list-group-flush">
         <li class="list-group-item"><strong>Idade: </strong>{{ filomena.idade }} anos</li>
         <li class="list-group-item"><strong>Email: </strong>{{ filomena.email }}</li>
         <li class="list-group-item"><strong>Telefone: </strong>{{ filomena.telefone }}</li>
+        <li class="list-group-item"><strong>Telefone: </strong>{{ filomena.telefone }}</li>
+
         </ul>
         <div class="card-body">
         <a href="#" class="card-link">Card link</a>

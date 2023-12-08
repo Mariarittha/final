@@ -1,4 +1,5 @@
 {% extends 'base_logada.html' %}
+
 {% load static %}
 
 {% block body %}
@@ -19,6 +20,7 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <hr>
 
     <h3>Editar Perfil</h3>
@@ -58,3 +60,26 @@
 </div>
 
 {% endblock body %}
+=======
+<img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 40px;" />
+<div class="card" style="width: 18rem;">
+    {% for filomena in filomenas %}
+        <div class="card-body">
+        <h5 class="card-title"> {{ filomena.nome }}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Idade: </strong>{{ filomena.idade }} anos</li>
+        <li class="list-group-item"><strong>Email: </strong>{{ filomena.email }}</li>
+        <li class="list-group-item"><strong>Telefone: </strong>{{ filomena.telefone }}</li>
+        </ul>
+        <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+        </div>
+  </div>
+ {% endfor %}
+
+<a href="{% url 'account_logout' %}">sair</a>
+
+{% endblock %}
+>>>>>>> c9affc650240b120f915c84e382d28b91f9d0399
