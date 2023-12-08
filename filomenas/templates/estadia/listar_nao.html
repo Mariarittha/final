@@ -4,6 +4,20 @@
 
 
 {% block body %}
+<style>
+  .text-orange {
+      background-color: #E28743; /* Laranja queimado */
+      transition: color 0.3s ease; /* Adicionando uma transição suave para a mudança de cor */
+      font-size: 16px;
+  }
+
+  .text-orange:hover {
+      background-color: #FF8C00; /* Mudança de cor ao passar o mouse por cima */
+  }
+  .text-orangee{
+      color: #E28743;
+  }
+</style>
     
   <!-- {% if messages %}
     {% for message in messages %}
@@ -22,9 +36,9 @@
             <div class="card" style="width: 18rem;">
               <img src="{{ estadia.imagem.url }}" alt="Imagem da Estadia" >
               <div class="card-body">
-                <h5 class="card-title">Nome da Estadia: <strong>{{ estadia.nome_estadia }}</strong></h5>
+                <h5 class="card-title text-orangee">Nome da Estadia: <strong>{{ estadia.nome_estadia }}</strong></h5>
                 <p class="card-text">Descrição: {{ estadia.descricao_estadia }}</p>
-                <a href="{% url 'filomenas:detalhar' pk=estadia.pk %}" class="btn btn-secondary">comprar</a>
+                <a href="{% url 'filomenas:detalhar' pk=estadia.pk %}" class="btn text-orange">comprar</a>
 
               </div>
             </div>

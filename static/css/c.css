@@ -9,9 +9,8 @@
 
 body{
     background-color: #E28743;
-
-
 }
+
 section,
 footer{
     padding: 54px 0;
@@ -29,16 +28,16 @@ p{
     padding: 0 5%;
 }
 
-header{
+/* header{
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
-}
+} */
 
-header.rolagem{
+/* header.rolagem{
     background-color: white;
-}
+} */
 .flex {
     display: flex;
     align-items: center;
@@ -70,25 +69,14 @@ header ul a::after {
     height: 3px;
     width: 0%;
     display: block;
-    margin-top: 5px; /* Ajuste conforme necessário */
-    transition: 0.3s;
+    margin-top: 3px; /* Ajuste conforme necessário */
+    transition: 0.5s;
 }
 
 header ul li:hover a::after {
     width: 100%;
 }
 
-
-.btn{
-    background-color: hsl(26, 73%, 57%);
-    color: white;
-    padding: 15px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    display: inline-block;
-    transition: 0.1s;
-    
-}
 .btn:hover{
     background-color: #dfa172;
 }
@@ -120,11 +108,6 @@ header ul li:hover a::after {
     font-weight: lighter;
     margin: 18px 0;
 }
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 .text-h1{
     color:#E28743;
@@ -138,8 +121,6 @@ html{
     max-width: 1200px;
     margin: auto;
 }
-
-
 
 header{
     width: 100%;

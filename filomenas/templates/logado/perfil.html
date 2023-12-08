@@ -1,85 +1,95 @@
 {% extends 'base_logada.html' %}
-
 {% load static %}
 
 {% block body %}
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-3">
-            <!-- Imagem de perfil redonda -->
-            <div class="text-center">
-                <img src="{% if user.hospede.imagem_perfil %}{{ user.hospede.imagem_perfil.url }}{% else %}{% static 'img/default_profile.png' %}{% endif %}" alt="Imagem de Perfil" class="img-fluid rounded-circle">
-            </div>
-        </div>
-        <div class="col-md-9">
-            <h2>{{ user.hospede.nome }}</h2>
-            <p>Profissão: {{ user.hospede.profissao }}</p>
-            <p>Email: {{ user.hospede.email }}</p>
-            <p>Idade: {{ user.hospede.idade }}</p>
-            <p>Telefone: {{ user.hospede.telefone }}</p>
-        </div>
-    </div>
+<img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 40px;" />
 
-<<<<<<< HEAD
-    <hr>
+<style>
+    .text-orangee {
+        background-color: #E28743;
+    }
+    .text-orangee:hover{
+        background-color: #f5a76b;
+    }
+    .b {
+        background-color: hsl(26, 73%, 57%);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        display: inline-block;
+        transition: 0.1s;
+    }
 
-    <h3>Editar Perfil</h3>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        
-        <div class="mb-3">
-            <label for="nome" class="form-label text-h1"><strong>Nome:</strong></label>
-            <input type="text" class="form-control" id="nome" name="nome" value="{{ user.hospede.nome }}">
-        </div>
+    .b:hover {
+        background-color: #f5a76b; /* Mudança de cor ao passar o mouse por cima */
+    }
 
-        <div class="mb-3">
-            <label for="profissao" class="form-label text-h1"><strong>Profissão:</strong></label>
-            <input type="text" class="form-control" id="profissao" name="profissao" value="{{ user.hospede.profissao }}">
-        </div>
+    .container {
+        padding-top: 20px;
+    }
 
-        <div class="mb-3">
-            <label for="email" class="form-label text-h1"><strong>Email:</strong></label>
-            <input type="email" class="form-control" id="email" name="email" value="{{ user.hospede.email }}">
-        </div>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
 
-        <div class="mb-3">
-            <label for="idade" class="form-label text-h1"><strong>Idade:</strong></label>
-            <input type="number" class="form-control" id="idade" name="idade" value="{{ user.hospede.idade }}">
-        </div>
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
 
-        <div class="mb-3">
-            <label for="imagem_perfil" class="form-label text-h1"><strong>Imagem de Perfil:</strong></label>
-            <input type="file" class="form-control" id="imagem_perfil" name="imagem_perfil">
-        </div>
+    th {
+        background-color: #E28743; /* Cor de fundo para cabeçalho da tabela */
+        color: white;
+    }
+</style>
 
-        <div class="text-center m-4">
-            <a href="{% url 'account_logout' %}" class="btn btn-danger">Sair</a>
-            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-        </div>
-    </form>
+<div class="container">
+    <a href="{% url 'filomenas:criar_hospede' %}" class="btn b">{{ request.user.username }}, finalize suas informações</a>
 </div>
 
-{% endblock body %}
-=======
-<img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 40px;" />
-<div class="card" style="width: 18rem;">
-    {% for filomena in filomenas %}
-        <div class="card-body">
-        <h5 class="card-title"> {{ filomena.nome }}</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-        <li class="list-group-item"><strong>Idade: </strong>{{ filomena.idade }} anos</li>
-        <li class="list-group-item"><strong>Email: </strong>{{ filomena.email }}</li>
-        <li class="list-group-item"><strong>Telefone: </strong>{{ filomena.telefone }}</li>
-        </ul>
-        <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-        </div>
-  </div>
- {% endfor %}
+<div class="m-4">
+    <div class="container product-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome completo</th>
+                    <th>Profissão</th>
+                    <th>Email</th>
+                    <th>Idade</th>
+                    <th>Telefone</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for hospede in hospedes %}
+                
 
-<a href="{% url 'account_logout' %}">sair</a>
+                <img src="{{ hospede.imagem_perfil.url }}" alt="Imagem da Estadia" class="" width="150px" height="100px">
 
+                <tr>
+                    <td>{{ hospede.nome }}</td>
+                    <td>{{ hospede.profissao }}</td>
+                    <td>{{ hospede.email }}</td>
+                    <td>{{ hospede.idade }}</td>
+                    <td>{{ hospede.telefone }}</td>
+                    
+                </tr>
+                
+                {% endfor %}
+
+            </tbody>
+        </table>
+        <br><br><br>
+        <div class="text-center">
+        <a href="#" class="btn text-orangee btn-buy">Editar</a>
+        <a href="{% url 'filomenas:listar_log' %}" class="btn btn-secondary btn-back">Voltar</a>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 {% endblock %}
->>>>>>> c9affc650240b120f915c84e382d28b91f9d0399

@@ -12,6 +12,11 @@
 
 {% block body %}
 <img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 35px;" />
+<style>
+    .cor-link{
+        color: #E28743;
+    }
+</style>
 
 <div class="container mt-5">
     <div class="row justify-content-center align-items-center">
@@ -34,21 +39,34 @@
                     </div>
                 </div>
                 <!-- ... Seus outros campos ... -->
-                <button type="submit" class="btn w3-brown">{% translate "Entrar" %}</button>
+                <style>
+                    .mar{
+                        background-color: #9f4907;
+                    }
+                    .mar:hover{
+                    background-color: #E28743;
+                    }
+
+                </style>
+                <button type="submit" class="btn mar">{% translate "Entrar" %}</button>
             </form>
             <div class="forgot-password">
-                <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% translate "Esqueceu a senha?" %}</a>
+                <br>
+                <a class="button secondaryAction cor-link" href="{% url 'account_reset_password' %}"><strong>{% translate "Esqueceu a senha?" %}</strong></a>
+          
             </div>
             <div class="mb-1">
                 <div class="br-checkbox">
+                    
                     <input id="keep_connected_checkbox" name="keep_connected_checkbox" type="checkbox"
                         aria-label="Manter-me conectado" />
+                        
                     <label for="keep_connected_checkbox">{% translate "Manter-me conectado" %}</label>
                 </div>
             </div>
         <span class="br-divider my-3"></span>
         <p class="first-access-href">
-            <a style="text-decoration-line: none" href="{% url 'account_signup' %}">{% translate "Primeiro Acesso?" %}</a>
+            <a style="text-decoration-line: none" href="{% url 'account_signup' %}" class="cor-link"><strong>{% translate "Primeiro Acesso?" %}</strong></a>
         </p>
         </div>
         <div class="col-md-5">

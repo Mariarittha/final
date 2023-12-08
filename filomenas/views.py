@@ -13,6 +13,9 @@ from users.permissions import AdministradorPermission
 
 class Home(generic.TemplateView):
     template_name = "nao/home.html"
+    
+class filomena_nao(generic.TemplateView):
+    template_name = "nao/filomena.html"
 
 # logado
 
@@ -24,8 +27,12 @@ class forms(generic.TemplateView):
 
 class Perfil(generic.TemplateView):
     template_name = "logado/perfil.html"
+    
+class filomena_logado(generic.TemplateView):
+    template_name = "logado/filomena.html"
 
-#CRUDS
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>....
+#                                                                        CRUDS
 
 # CRUD de Estadia
 class ListarEstadia(LoginRequiredMixin, generic.ListView):
@@ -74,8 +81,15 @@ class ApagarEstadia(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("filomenas:listar_filo")
     success_message = "Estadia removida com sucesso!"
     template_name = "filomenas/apagar.html" 
+
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>....
     
 # CRUD de perfil do hospede 
+
+class Listarhospede(LoginRequiredMixin, generic.ListView):
+    model = hospede
+    template_name = 'logado/hospede.html'
+    context_object_name = 'hospedes'
 
 class Detalharhospede(generic.DetailView):
     model = hospede
@@ -98,7 +112,9 @@ class Atualizarhospede(LoginRequiredMixin, views.SuccessMessageMixin, generic.Up
 class Apagarhospede(LoginRequiredMixin, generic.DeleteView):
     model = hospede
     success_url = reverse_lazy("filomenas:home")
-    
+  
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>....
+  
 # CRUD de perfil filomenas
 
 class Detalharfilomena(generic.DetailView):

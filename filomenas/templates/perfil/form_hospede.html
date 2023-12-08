@@ -10,30 +10,36 @@
         <div class="col-6 mb-3">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                
+
+                {{ form.media }}
+
                 <div class="mb-3">
-                    <label for="nome" class="form-label  text-h1"><strong>Nome:</strong></label>
-                    <input type="text" class="form-control" id="nome" name="nome">
+                    <label for="{{ form.nome.id_for_label }}" class="form-label text-h1"><strong>Nome:</strong></label>
+                    {{ form.nome }}
                 </div>
 
                 <div class="mb-3">
-                    <label for="profissao" class="form-label text-h1"><strong>Profissão:</strong></label>
-                    <input type="text" class="form-control" id="profissao" name="profissao">
+                    <label for="{{ form.profissao.id_for_label }}" class="form-label text-h1"><strong>Profissão:</strong></label>
+                    {{ form.profissao }}
                 </div>
 
                 <div class="mb-3">
-                    <label for="email" class="form-label  text-h1"><strong>Email:</strong></label>
-                    <input type="email" class="form-control" id="email" name="email">
+                    <label for="{{ form.email.id_for_label }}" class="form-label text-h1"><strong>Email:</strong></label>
+                    {{ form.email }}
                 </div>
 
                 <div class="mb-3">
-                    <label for="idade" class="form-label  text-h1"><strong>Idade:</strong></label>
-                    <input type="number" class="form-control" id="idade" name="idade">
+                    <label for="{{ form.idade.id_for_label }}" class="form-label text-h1"><strong>Idade:</strong></label>
+                    {{ form.idade }}
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.imagem_perfil.id_for_label }}" class="form-label text-h1"><strong>Telefone:</strong></label>
+                    {{ form.telefone }}
                 </div>
 
                 <div class="mb-3">
-                    <label for="imagem_perfil" class="form-label  text-h1"><strong>Imagem de Perfil:</strong></label>
-                    <input type="file" class="form-control" id="imagem_perfil" name="imagem_perfil">
+                    <label for="{{ form.imagem_perfil.id_for_label }}" class="form-label text-h1"><strong>Imagem de Perfil:</strong></label>
+                    {{ form.imagem_perfil }}
                 </div>
 
                 <div class="text-center m-4">

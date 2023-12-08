@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #E28743;
+}
+
+section,
+footer {
+    padding: 54px 0;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header {
+    width: 100%;
+    padding: 30px 4%;
+}
+
+header ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+header ul li {
+    display: inline-block;
+    margin: 0 20px; /* Ajuste conforme necessário */
+}
+
+header ul li a {
+    color: #E28743;
+    text-decoration: none;
+    font-size: 14px;
+    position: relative;
+}
+
+header ul li a::after {
+    content: "";
+    background-color: #E28743;
+    height: 3px;
+    width: 0%;
+    display: block;
+    margin-top: 3px;
+    transition: 0.5s;
+}
+
+header ul li:hover a::after {
+    width: 100%;
+}
+
+.btn-contato button {
+    border: 0;
+    background-color: #E28743;
+    color: #fff;
+    cursor: pointer;
+    transition: .2s;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+header img {
+    display: block;
+    margin: 0 auto;
+}
+
+.logo-container {
+    width: 70px; /* Ajuste conforme necessário */
+    text-align: center;
+}
+
+.banner {
+    display: flex;
+    justify-content: center;
+}
+
+.banner .banner-text {
+    margin: 150px;
+    text-align: center;
+    padding: 0 90px;
+}
+
+.banner .banner-text h1 {
+    font-size: 96px;
+    color: #E28743;
+}
+
+.banner .banner-text p {
+    font-size: 20px;
+    color: wheat;
+    font-weight: lighter;
+    margin: 18px 0;
+}
+
+.text-h1 {
+    color: #E28743;
+}
+
+html {
+    height: 200vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+nav.scrolled {
+    background-color: #E28743;
+    transition: background-color 0.3s ease;
+}
+
+nav, ul {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 0;
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.login button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.login {
+    display: grid;
+    grid-template-columns: repeat(2);
+}
+
+.titulo {
+    padding: 10px;
+    font-family: Impact, sans-serif;
+    width: 100%;
+}

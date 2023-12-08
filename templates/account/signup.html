@@ -1,39 +1,65 @@
 {% extends "base_nao.html" %}
 {% load allauth i18n socialaccount %}
+{% load static %}
 {% block head_title %}
     {% trans "Signup" %}
 {% endblock head_title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
 {% block body %}
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <h1 class="text-center mb-4">{% trans "Sign Up" %}</h1>
-                <p class="text-center">
-                    {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
-                </p>
-                {% url 'account_signup' as action_url %}
-                <form method="post" action="{{ action_url }}" class="entrance signup">
-                    {% csrf_token %}
-                    {% for field in form %}
-                        <div class="mb-3">
-                            {{ field.label_tag }} {# Improved label styling #}
-                            {{ field }}
-                            {% if field.errors %}
-                                <div class="invalid-feedback">
-                                    {{ field.errors|join:", " }}
-                                </div>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-                    {% if redirect_field_value %}
-                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                    {% endif %}
-                    <div class="d-grid gap-2 mt-3">
-                        <button type="submit" class="btn btn-primary">{% trans "Sign Up" %}</button>
+<img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 40px;" />
+
+<style>
+    /* Adicione estilos personalizados aqui */
+    .loginn {
+        color: #E28743;
+    }
+    .login .mb-3,
+    .login input[type="email"] {
+            /* Estilo para a caixa de email e outros campos */
+            margin-bottom: 15px;
+    }
+    .loginho {
+        color: #E28743;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6">
+            <h1 class="text-center mb-4 loginn">Cadastro</h1>
+            <p class="text-center">
+                Já tem uma conta? Faça o <a href="{{ login_url }}" class="loginho">login</a>.
+            </p>
+            {% url 'account_signup' as action_url %}
+            <form method="post" action="{{ action_url }}" class="login"> <!-- Use a classe 'login' para aplicar estilos semelhantes -->
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="mb-3">
+                        {{ field.label_tag }} {# Improved label styling #}
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="invalid-feedback">
+                                {{ field.errors|join:", " }}
+                            </div>
+                        {% endif %}
                     </div>
-                </form>
-                {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
-            </div>
+                {% endfor %}
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <div class="d-grid gap-2 mt-3">
+                    <button type="submit" class="btn w3-brown">{% trans "Sign Up" %}</button>
+                </div>
+            </form>
+            {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+        </div>
+        <div class="col-md-5">
+            <img src="{% static 'img/loginn.png' %}" class="img-fluid" alt="Imagem de Login">
         </div>
     </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br>
 {% endblock %}
