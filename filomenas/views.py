@@ -6,6 +6,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from requests import request
 from .forms import EstadiaForm, ProdutosForm, HospedeForm, FilomenasForm
 from .models import estadia, Produtos, filomenas, hospede
+from users.permissions import AdministradorPermission
+
 
 # não logado
 
@@ -20,7 +22,7 @@ class Home2(generic.TemplateView):
 class forms(generic.TemplateView):
     template_name = "logado/forms.html"
 
-class perfil(generic.TemplateView):
+class Perfil(generic.TemplateView):
     template_name = "logado/perfil.html"
 
 #CRUDS
@@ -100,7 +102,7 @@ class Apagarhospede(LoginRequiredMixin, generic.DeleteView):
 # CRUD de perfil filomenas
 
 class Detalharfilomena(generic.DetailView):
-    model = hospede
+    model = filomenas
     template_name = 'filomenas/detalhar_filo.html'
 
 class Listarfilomena(LoginRequiredMixin, generic.ListView):
@@ -108,7 +110,7 @@ class Listarfilomena(LoginRequiredMixin, generic.ListView):
     context_object_name = 'filomenas'
     paginate_by = 5
 
-class Criarfilomena(LoginRequiredMixin, views.SuccessMessageMixin, generic.CreateView):
+class Criarfilomena(AdministradorPermission, LoginRequiredMixin, views.SuccessMessageMixin, generic.CreateView):
     model = filomenas
     form_class = FilomenasForm
     template_name = 'filomenas/form.html'
