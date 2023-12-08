@@ -8,9 +8,7 @@ urlpatterns = [
     path('', views.Home.as_view(), name='home'),
     
     # logado
-    path('home2/', views.Home2.as_view(), name='home2'),
-    path('perfil/', views.perfil.as_view(), name='perfil'),
-    
+    path('home2/', views.Home2.as_view(), name='home2'),    
     path('perfil/', views.perfil.as_view(), name="perfil"),
     
     path('listar/', views.ListarEstadia.as_view(), name="listar_log"),
