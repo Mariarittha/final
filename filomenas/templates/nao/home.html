@@ -42,6 +42,34 @@
         </div>
     </div>
 </div>
+
+
+<p class="text-center">
+  <a class="btn w3-brown" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Cadastre-se como Hóspede!</a>
+  <button class="btn w3-brown" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Cadastre-se como Filomena!</button>
+</p>
+
+<div class="row text-center align-items-center" style="justify-items: center;">
+  <div class="col">
+    <div class="p-4 collapse multi-collapse" id="multiCollapseExample1">
+      <div class="card card-body">
+        Seja um Hóspede e venha conhecer e se emocionar com a nossa história!
+        <a href="{% url 'account_signup' %}" style="color: #E28743;">Ser um Hóspede!</a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class=" p-4 multi-collapse" id="multiCollapseExample2">
+      <div class="card card-body">
+        Seja uma Filomena e venha contar sobre sua cultura e sua história!
+        <a href="{% url 'filomenas:criar_filomena' %}" style="color: #E28743;">Ser uma Filomena!</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <div style="background-color: wheat;" class="p-4">
     <div class="titulos">
         <h2 id="titulos" style="color: black;">LOCALIZAÇÃO</h2>

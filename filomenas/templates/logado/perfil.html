@@ -61,32 +61,26 @@
                     <th>Email</th>
                     <th>Idade</th>
                     <th>Telefone</th>
-                    
+                    <th>Imagem</th>
                 </tr>
             </thead>
             <tbody>
-                
                 {% for hospede in hospedes %}
-                
-
-                <img src="{{ hospede.imagem_perfil.url }}" alt="Imagem da Estadia" class="" width="150px" height="100px">
-
-                <tr>
-                    <td>{{ hospede.nome }}</td>
-                    <td>{{ hospede.profissao }}</td>
-                    <td>{{ hospede.email }}</td>
-                    <td>{{ hospede.idade }}</td>
-                    <td>{{ hospede.telefone }}</td>
-                    
-                </tr>
-                
+                    <tr>
+                        <td>{{ hospede.nome }}</td>
+                        <td>{{ hospede.profissao }}</td>
+                        <td>{{ hospede.email }}</td>
+                        <td>{{ hospede.idade }}</td>
+                        <td>{{ hospede.telefone }}</td>
+                        <td><img src="{{ hospede.imagem_perfil.url }}" alt="Imagem da Estadia" width="150px" height="100px"></td>
+                    </tr>
                 {% endfor %}
-
             </tbody>
         </table>
+
         <br><br><br>
         <div class="text-center">
-        <a href="#" class="btn text-orangee btn-buy">Editar</a>
+        <a href="{% url 'filomenas:criar_hospede' %}" class="btn text-orangee btn-buy">Editar</a>
         <a href="{% url 'filomenas:listar_log' %}" class="btn btn-secondary btn-back">Voltar</a>
         <a href="{% url 'account_logout' %}" class="btn btn-danger">Sair</a>
         </div>

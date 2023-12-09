@@ -99,7 +99,7 @@ class Criarhospede(LoginRequiredMixin, views.SuccessMessageMixin, generic.Create
     model = hospede
     form_class = HospedeForm
     template_name = 'perfil/form_hospede.html'
-    success_url = reverse_lazy("filomenas:listar_hospede")
+    success_url = reverse_lazy("filomenas:perfil")
     success_message = "Hospede cadastrado com sucesso!"
        
 
@@ -128,7 +128,7 @@ class Listarfilomena(LoginRequiredMixin, generic.ListView):
     context_object_name = 'filomenas'
     paginate_by = 5
 
-class Criarfilomena(LoginRequiredMixin, views.SuccessMessageMixin, generic.CreateView):
+class Criarfilomena(views.SuccessMessageMixin, generic.CreateView):
     model = filomenas
     form_class = FilomenasForm
     template_name = 'filomenas/form.html'

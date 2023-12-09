@@ -15,7 +15,7 @@ class ProdutosForm(forms.ModelForm):
 class HospedeForm(forms.ModelForm):
     class Meta:
         model = hospede
-        fields = ['nome', 'profissao', 'email', 'idade', 'imagem_perfil', 'telefone','formulario_enviado']
+        fields = ['nome', 'profissao', 'email', 'idade', 'imagem_perfil', 'telefone']
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome do Hóspede'}),
             'profissao': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Profissão'}),
@@ -23,7 +23,6 @@ class HospedeForm(forms.ModelForm):
             'idade': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Idade'}),
             'imagem_perfil': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'telefone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Telefone'}),
-            'formulario_enviado': forms.HiddenInput(),
         }
 
 class FilomenasForm(forms.ModelForm):
