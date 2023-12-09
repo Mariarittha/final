@@ -11,11 +11,11 @@ urlpatterns = [
     # logado
     path('home2/', views.Home2.as_view(), name='home2'),    
     path('perfil/', views.Perfil.as_view(), name="perfil"),
-    path('fil/', views.filomena_logado.as_view(), name="filomena_logado"),
     
     #listar
     path('listar/', views.ListarEstadia.as_view(), name="listar_log"),
     path('listarfilo/', views.ListarEstadiafilo.as_view(), name="listar_filo"),
+    path('listarfilomena/', views.Listarfilomena.as_view(), name="listar_filomena"),
     path('listar_nao/', views.ListarEstadianao.as_view(), name="listar_nao"),
 
     #detalhar
@@ -29,10 +29,12 @@ urlpatterns = [
     path('forms/', views.forms.as_view(), name="forms"),
  
     #apagar
-    path('apagar/<int:pk>/', views.Apagarfilomena.as_view(), name='apagar'),
-    path('apagarestadia/<int:pk>/', views.ApagarEstadia.as_view(), name='apagarestadia'),
+    path('apagar_filomena/<int:pk>/', views.Apagarfilomena.as_view(), name='apagar_filomena'),
+    path('apagar_estadia/<int:pk>/', views.ApagarEstadia.as_view(), name='apagar_estadia'),
 
     #atualizar
-    path('atualizar/<int:pk>/', views.AtualizarEstadia.as_view(), name="atua"),
+    path('atualizar_estadia/<int:pk>/', views.AtualizarEstadia.as_view(), name="atualizar_estadia"),
+    path('atualizar_filomena/<int:pk>/', views.Atualizarfilomena.as_view(), name="atualizar_filomena"),
+
     path('atualizar_hosp/<int:pk>/', views.Atualizarhospede.as_view(), name="atuar_hospede"),
 ]

@@ -88,7 +88,50 @@
         <div class="text-center">
         <a href="#" class="btn text-orangee btn-buy">Editar</a>
         <a href="{% url 'filomenas:listar_log' %}" class="btn btn-secondary btn-back">Voltar</a>
+        <a href="{% url 'account_logout' %}" class="btn btn-danger">Sair</a>
         </div>
+
+                        <!-- Modal de logout -->
+                        <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <img src="{% static 'img/logo.png' %}" alt="" class="rounded-circle" style="width: 80px; height: 70px;">
+                                    <h5 class="modal-title" id="exampleModalLabel"><strong>Filomenas</strong>
+                                    </h5>
+                    
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Fechar"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p><strong>{{ request.user.username }}</strong>, você tem certeza de que deseja sair?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
+                                    </button>
+                                    <button type="button" class="btn a" id="confirmLogout">Sair</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <script>
+                        document.getElementById('confirmLogout').addEventListener('click', function () {
+                            document.getElementById('logoutForm').submit();
+                        });
+                    </script>
+                    
+                    <!-- Formulário de logout -->
+                    <form id="logoutForm" method="post" action="{% url 'account_logout' %}"
+                        style="display: none;">
+                        {% csrf_token %}
+                        {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                        {% endif %}
+                    </form>
+                </div>   
+    
     </div>
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

@@ -4,42 +4,46 @@
 {% block body %}
 <img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 40px;" />
 
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="mb-3">
-        <label for="nome_filoena" class="form-label  text-h1"><strong>Nome:</strong></label>
-        <input type="text" class="form-control" id="nome_estadia" name="nome_estadia">
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6 mb-3">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="nome" class="form-label  text-h1"><strong>Nome:</strong></label>
+                    <input type="text" class="form-control" id="nome" name="nome">
+                </div>
+            
+                <div class="mb-3">
+                    <label for="idade" class="form-label text-h1"><strong>Idade </strong></label>
+                    <input type="number" class="form-control" id="idade" name="idade">
+                </div>
+            
+                <div class="mb-3">
+                    <label for="email" class="form-label  text-h1"><strong>Email:</strong></label>
+                    <input type="email" class="form-control" id="email" name="email" step="0.01">
+                </div>
+            
+                <div class="mb-3">
+                    <label for="telefone" class="form-label  text-h1"><strong>Telefone:</strong></label>
+                    <input type="text" class="form-control" id="telefone" name="telefone">
+                </div>
+            
+                <div class="mb-3">
+                    <label for="imagem_filo" class="form-label  text-h1"><strong>Foto de Perfil:</strong></label>
+                    <input type="file" class="form-control" id="imagem_filo" name="imagem_filo">
+                </div>
+            
+                <div class="text-center m-4">
+                    <a href="{% url 'filomenas:listar_filomena' %}" class="btn btn-secondary">Voltar</a>
+                    <button type="submit" class="btn  w3-brown">Enviar</button>
+                </div>
+            </form>
+        </div>
     </div>
-
-    <div class="mb-3">
-        <label for="idade" class="form-label text-h1"><strong>Idade </strong></label>
-        <input type="number" class="form-control" id="idade" name="idade">
-    </div>
-
-    <div class="mb-3">
-        <label for="email" class="form-label  text-h1"><strong>Email:</strong></label>
-        <input type="email" class="form-control" id="email" name="email" step="0.01">
-    </div>
-
-    <div class="mb-3">
-        <label for="telef" class="form-label  text-h1"><strong>Telefone:</strong></label>
-        <input type="text" class="form-control" id="telef" name="telef">
-    </div>
-
-    <div class="mb-3">
-        <label for="imagem" class="form-label  text-h1"><strong>Foto de Perfil:</strong></label>
-        <input type="file" class="form-control" id="imagem" name="imagem">
-    </div>
-
-    <div class="text-center m-4">
-        <a href="{% url 'filomenas:perfil' %}" class="btn btn-secondary">Voltar</a>
-        <button type="submit" class="btn  w3-brown">Enviar</button>
-    </div>
-</form>
 </div>
-<div class="col"></div>
-</div>
-</div>
+
 
 
 

@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.views import generic
+from django.views.generic import ListView,CreateView,DeleteView,DetailView, UpdateView,TemplateView
 from django.urls import reverse_lazy
 from django.contrib.messages import views
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -28,8 +29,6 @@ class forms(generic.TemplateView):
 class Perfil(generic.TemplateView):
     template_name = "logado/perfil.html"
     
-class filomena_logado(generic.TemplateView):
-    template_name = "logado/filomena.html"
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>....
 #                                                                        CRUDS
@@ -123,19 +122,28 @@ class Detalharfilomena(generic.DetailView):
 
 class Listarfilomena(LoginRequiredMixin, generic.ListView):
     model = filomenas
+    template_name = 'logado/filomena.html'
     context_object_name = 'filomenas'
     paginate_by = 5
 
-class Criarfilomena(AdministradorPermission, LoginRequiredMixin, views.SuccessMessageMixin, generic.CreateView):
+class Criarfilomena(LoginRequiredMixin, views.SuccessMessageMixin, generic.CreateView):
     model = filomenas
     form_class = FilomenasForm
     template_name = 'filomenas/form.html'
     success_url = reverse_lazy("filomenas:home")
     success_message = "filomena cadastrada com sucesso!"
 
+class CriarEstadia(LoginRequiredMixin, views.SuccessMessageMixin, generic.CreateView):
+    model = estadia
+    form_class = EstadiaForm
+    template_name = 'estadia/form.html'
+    success_url = reverse_lazy("filomenas:home")
+    success_message = "Estadia cadastrada com sucesso!"
+
 class Atualizarfilomena(LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
     model = filomenas
     form_class = FilomenasForm
+    template_name = 'filomenas/form.html'
     success_url = reverse_lazy("filomenas:home")
     success_message = "Perfil atualizado com sucesso, {{ request.user.username }}!" 
 
