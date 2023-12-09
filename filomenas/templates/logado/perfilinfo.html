@@ -1,0 +1,65 @@
+{% extends 'base_logada.html' %}
+{% load static %}
+
+{% block body %}
+<img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 40px;" />
+<br><br>
+{% block header %}
+    <h1>{{ hospedes.0.nome }} - Perfil</h1>
+{% endblock %}
+
+<style>
+    table.profile-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table.profile-table th, table.profile-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    table.profile-table th {
+        background-color: #E28743;
+        color: white;
+        font-weight: bold;
+    }
+
+    table.profile-table img {
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+</style>
+<table class="profile-table">
+    <thead>
+        <tr>
+            <th>Foto</th>
+            <th>Nome completo</th>
+            <th>Profissão</th>
+            <th>Email</th>
+            <th>Idade</th>
+            <th>Telefone</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for hospede in hospedes %}
+            <tr>
+                <td><img src="{{ hospede.imagem_perfil.url }}" alt="Foto do Perfil" width="50" height="50"></td>
+                <td>{{ hospede.nome }}</td>
+                <td>{{ hospede.profissao }}</td>
+                <td>{{ hospede.email }}</td>
+                <td>{{ hospede.idade }}</td>
+                <td>{{ hospede.telefone }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+ 
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
+
+
+    

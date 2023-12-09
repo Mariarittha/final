@@ -9,9 +9,10 @@ class ProdutosAdmin(admin.ModelAdmin):
 
 @admin.register(hospede)
 class HospedeAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'profissao', 'email', 'idade', 'imagem_perfil', 'telefone')
-
-@admin.register(filomenas)
+    list_display = ['nome', 'profissao', 'email', 'idade', 'telefone', 'formulario_enviado']
+    search_fields = ['nome', 'profissao', 'email', 'telefone']
+    list_filter = ['formulario_enviado']
+    
 class FilomenasAdmin(admin.ModelAdmin):
     list_display = ('nome', 'idade', 'descricao', "imagem_filo", "telefone")
 
