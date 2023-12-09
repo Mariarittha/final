@@ -25,9 +25,6 @@ class Home2(generic.TemplateView):
 
 class forms(generic.TemplateView):
     template_name = "logado/forms.html"
-
-class Perfil(generic.TemplateView):
-    template_name = "logado/perfil.html"
     
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>....
@@ -85,9 +82,13 @@ class ApagarEstadia(LoginRequiredMixin, generic.DeleteView):
     
 # CRUD de perfil do hospede 
 
+class Perfil(LoginRequiredMixin,generic.TemplateView):
+    model = hospede
+    template_name = 'logado/perfil.html'
+    
 class Listarhospede(LoginRequiredMixin, generic.ListView):
     model = hospede
-    template_name = 'logado/hospede.html'
+    template_name = 'logado/perfilinfo.html'
     context_object_name = 'hospedes'
 
 class Detalharhospede(generic.DetailView):
@@ -98,14 +99,15 @@ class Criarhospede(LoginRequiredMixin, views.SuccessMessageMixin, generic.Create
     model = hospede
     form_class = HospedeForm
     template_name = 'perfil/form_hospede.html'
-    success_url = reverse_lazy("filomenas:perfil")
+    success_url = reverse_lazy("filomenas:listar_hospede")
     success_message = "Hospede cadastrado com sucesso!"
+       
 
 class Atualizarhospede(LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
     model = hospede
     form_class = HospedeForm
     template_name = "perfil/form_hospede.html"
-    success_url = reverse_lazy("filomenas:perfil")
+    success_url = reverse_lazy("filomenas:listar_hospede")
     success_message = "Perfil atualizado com sucesso"
 
 class Apagarhospede(LoginRequiredMixin, generic.DeleteView):

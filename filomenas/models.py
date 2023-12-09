@@ -16,6 +16,8 @@ class hospede(models.Model):
     idade = models.IntegerField()
     imagem_perfil = models.ImageField(null=True)
     telefone = models.CharField(max_length=20, null=True)
+    formulario_enviado = models.BooleanField(default=False)
+
 
 
 class filomenas(models.Model):
