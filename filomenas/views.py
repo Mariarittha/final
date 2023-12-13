@@ -35,19 +35,19 @@ class ListarEstadia(LoginRequiredMixin, generic.ListView):
     model = estadia
     template_name = 'estadia/listar.html'
     context_object_name = 'estadias'
-    paginate_by = 5
+    paginate_by = 2
 
 class ListarEstadiafilo(LoginRequiredMixin, generic.ListView):
     model = estadia
     template_name = 'filomenas/listar_estadia.html'
     context_object_name = 'estadias'
-    paginate_by = 5
+    paginate_by = 2
     
 class ListarEstadianao( generic.ListView):
     model = estadia
     template_name = 'estadia/listar_nao.html'
     context_object_name = 'estadias'
-    paginate_by = 5
+    paginate_by = 2
 
 class Detalharestadialog(generic.DetailView):
     model = estadia
@@ -124,15 +124,15 @@ class Detalharfilomena(generic.DetailView):
 
 class Listarfilomena(LoginRequiredMixin, generic.ListView):
     model = filomenas
-    template_name = 'logado/filomena.html'
+    template_name = 'filomenas/listar_filomenas.html'
     context_object_name = 'filomenas'
-    paginate_by = 5
+    paginate_by = 3
 
 class Criarfilomena(views.SuccessMessageMixin, generic.CreateView):
     model = filomenas
     form_class = FilomenasForm
     template_name = 'filomenas/form.html'
-    success_url = reverse_lazy("filomenas:home")
+    success_url = reverse_lazy("filomenas:home2")
     success_message = "filomena cadastrada com sucesso!"
 
 class CriarEstadia(LoginRequiredMixin, views.SuccessMessageMixin, generic.CreateView):
@@ -142,14 +142,14 @@ class CriarEstadia(LoginRequiredMixin, views.SuccessMessageMixin, generic.Create
     success_url = reverse_lazy("filomenas:home")
     success_message = "Estadia cadastrada com sucesso!"
 
-class Atualizarfilomena(LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
+class Atualizarfilomena(AdministradorPermission, LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
     model = filomenas
     form_class = FilomenasForm
     template_name = 'filomenas/form.html'
     success_url = reverse_lazy("filomenas:home")
     success_message = "Perfil atualizado com sucesso, {{ request.user.username }}!" 
 
-class Apagarfilomena(LoginRequiredMixin, generic.DeleteView):
+class Apagarfilomena(AdministradorPermission, LoginRequiredMixin, generic.DeleteView):
     template_name = "reservas/apagar.html"
     success_message = "Filomena removida com sucesso!"
     model = filomenas

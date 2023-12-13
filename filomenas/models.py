@@ -1,5 +1,4 @@
 from django.db import models
-
 from operator import mod
 from django.db import models
 
@@ -18,8 +17,6 @@ class hospede(models.Model):
     telefone = models.CharField(max_length=20, null=True)
     formulario_enviado = models.BooleanField(default=False)
 
-
-
 class filomenas(models.Model):
     nome = models.CharField(max_length=120)
     idade = models.IntegerField()
@@ -27,7 +24,6 @@ class filomenas(models.Model):
     imagem_filo = models.ImageField(null=True)
     email = models.EmailField(null=True)
     telefone = models.CharField(max_length=20, null=True)
-
 
 class estadia(models.Model):
     imagem = models.ImageField(null=True)

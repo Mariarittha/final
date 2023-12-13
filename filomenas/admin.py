@@ -13,6 +13,7 @@ class HospedeAdmin(admin.ModelAdmin):
     search_fields = ['nome', 'profissao', 'email', 'telefone']
     list_filter = ['formulario_enviado']
     
+@admin.register(filomenas)  
 class FilomenasAdmin(admin.ModelAdmin):
     list_display = ('nome', 'idade', 'descricao', "imagem_filo", "telefone")
 
