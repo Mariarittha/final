@@ -1,0 +1,57 @@
+{% extends 'base_logada.html' %}
+{% load static %}
+<!-- 
+
+<form action="{% url 'filomenas:apagar_estadia' estadia.pk %}" method="post">
+    {% csrf_token %}
+    <div class="modal fade" id="exampleModal-{{ object.pk }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmação de Exclusão</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            Deseja excluir o registro {{ object }}?
+            {{ object.pk }}
+            {{ form }}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-danger">Excluir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+ -->
+
+
+{% block body %}
+<img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 40px;" />
+
+<br><br>
+
+<h3 class="m-3 text-center">Excluir Estadia</h3>
+
+<div class="m-3 text-center">
+
+    <form method="post">
+        <section class="form container-fluid p-5x ">
+            {% csrf_token %}
+
+                <p> Você tem certeza que quer apagar esta estadia?</p>
+                {{ form }}
+        </section>
+       
+        <button class="btn btn-danger " type="submit"> Confirmar</button>
+        
+            </div>
+
+
+
+    </form>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+
+{% endblock %}

@@ -76,7 +76,7 @@ class ApagarEstadia(LoginRequiredMixin, generic.DeleteView):
     model = estadia
     success_url = reverse_lazy("filomenas:listar_filo")
     success_message = "Estadia removida com sucesso!"
-    template_name = "filomenas/apagar.html" 
+    template_name = "estadia/apagar.html" 
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>....
     
