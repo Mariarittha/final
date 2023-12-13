@@ -71,6 +71,14 @@ class AtualizarEstadia(LoginRequiredMixin, views.SuccessMessageMixin, generic.Up
     template_name = "estadia/form.html"
     success_url = reverse_lazy("filomenas:listar_filo")
     success_message = "Estadia atualizada com sucesso!"
+    
+class Atualizarfilomena( LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
+    model = filomenas
+    form_class = FilomenasForm
+    template_name = 'filomenas/form.html'
+    success_url = reverse_lazy("filomenas:listar_filomena")
+    success_message = "Perfil atualizado com sucesso, {{ request.user.username }}!" 
+
 
 class ApagarEstadia(LoginRequiredMixin, generic.DeleteView):
     model = estadia
@@ -142,15 +150,20 @@ class CriarEstadia(LoginRequiredMixin, views.SuccessMessageMixin, generic.Create
     success_url = reverse_lazy("filomenas:home")
     success_message = "Estadia cadastrada com sucesso!"
 
-class Atualizarfilomena(AdministradorPermission, LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
+class Atualizarfilomena( LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
     model = filomenas
     form_class = FilomenasForm
     template_name = 'filomenas/form.html'
-    success_url = reverse_lazy("filomenas:home")
+    success_url = reverse_lazy("filomenas:listar_filomena")
     success_message = "Perfil atualizado com sucesso, {{ request.user.username }}!" 
 
-class Apagarfilomena(AdministradorPermission, LoginRequiredMixin, generic.DeleteView):
-    template_name = "reservas/apagar.html"
+class Apagarfilomena( LoginRequiredMixin, generic.DeleteView):
+    template_name = "filomenas/apagar.html"
     success_message = "Filomena removida com sucesso!"
     model = filomenas
-    success_url = reverse_lazy("filomenas:home")
+    success_url = reverse_lazy("filomenas:home2")
+
+class Apagarfilomena( LoginRequiredMixin, generic.DeleteView):
+    model = filomenas
+    success_message = "Filomena removida com sucesso!"
+    success_url = reverse_lazy("filomenas:home2")

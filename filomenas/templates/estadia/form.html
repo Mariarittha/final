@@ -12,37 +12,36 @@
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="nome_estadia" class="form-label  text-h1"><strong>Nome da Estadia:</strong></label>
-                    <input type="text" class="form-control" id="nome_estadia" name="nome_estadia">
+                    {{ form.nome_estadia }}
                 </div>
 
                 <div class="mb-3">
                     <label for="duracao" class="form-label text-h1"><strong>Duração(em dias): </strong></label>
-                    <input type="number" class="form-control" id="duracao" name="duracao">
+                    {{ form.duracao }}
                 </div>
 
                 <div class="mb-3">
                     <label for="descricao_estadia" class="form-label  text-h1"><strong>Descrição da Estadia:</strong></label>
-                    <textarea class="form-control" id="descricao_estadia" name="descricao_estadia" rows="4"></textarea>
+                    {{ form.descricao_estadia }}
                 </div>
 
                 <div class="mb-3">
                     <label for="localizacao" class="form-label  text-h1"><strong>Localização:</strong></label>
-                    <input type="text" class="form-control" id="localizacao" name="localizacao">
-                </div>
+                    {{ form.localizacao }}                </div>
 
                 <div class="mb-3">
                     <label for="valor" class="form-label  text-h1"><strong>Valor:</strong></label>
-                    <input type="number" class="form-control" id="valor" name="valor" step="0.01">
+                    {{ form.valor}} 
                 </div>
 
                 <div class="mb-3">
                     <label for="programacao" class="form-label  text-h1"><strong>Programação:</strong></label>
-                    <input type="text" class="form-control" id="programacao" name="programacao">
+                    {{ form.programacao }}      
                 </div>
 
                 <div class="mb-3">
                     <label for="imagem" class="form-label  text-h1"><strong>Imagem:</strong></label>
-                    <input type="file" class="form-control" id="imagem" name="imagem">
+                    {{ form.imagem }}
                 </div>
 
                 <div class="text-center m-4">
