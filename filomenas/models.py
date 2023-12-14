@@ -31,5 +31,5 @@ class estadia(models.Model):
     nome_estadia = models.CharField(max_length=200)
     descricao_estadia = models.CharField(max_length=1000)
     localizacao = models.CharField(max_length=500)
-    valor = models.DecimalField(verbose_name=("valor"), decimal_places=2, max_digits=6)
+    valor = models.DecimalField(verbose_name=("valor"), decimal_places=2, max_digits=6)    
     programacao = models.CharField(max_length=1000, null=True)

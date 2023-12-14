@@ -50,3 +50,5 @@ class EstadiaForm(forms.ModelForm):
             'valor': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Valor'}),
             'programacao': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Programação'}),
         }
+
+

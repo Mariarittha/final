@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.http import JsonResponse
 from django.views import generic
 from django.views.generic import ListView,CreateView,DeleteView,DetailView, UpdateView,TemplateView
 from django.urls import reverse_lazy
@@ -8,7 +9,7 @@ from django.contrib.messages import views
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import EstadiaForm, ProdutosForm, HospedeForm, FilomenasForm
 from .models import estadia, Produtos, filomenas, hospede
-from users.permissions import AdministradorPermission
+from users.permissions import AdminPermission
 
 
 # não logado
@@ -68,14 +69,14 @@ class CriarEstadia(LoginRequiredMixin, views.SuccessMessageMixin, generic.Create
     success_url = reverse_lazy("filomenas:listar_log")
     success_message = "Estadia cadastrada com sucesso!"
 
-class AtualizarEstadia(LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
+class AtualizarEstadia(AdminPermission, LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
     model = estadia
     form_class = EstadiaForm
     template_name = "estadia/form.html"
     success_url = reverse_lazy("filomenas:listar_filo")
     success_message = "Estadia atualizada com sucesso!"
     
-class Atualizarfilomena( LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
+class Atualizarfilomena(AdminPermission, LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
     model = filomenas
     form_class = FilomenasForm
     template_name = 'filomenas/form.html'
@@ -83,7 +84,7 @@ class Atualizarfilomena( LoginRequiredMixin, views.SuccessMessageMixin, generic.
     success_message = "Perfil atualizado com sucesso, {{ request.user.username }}!" 
 
 
-class ApagarEstadia(LoginRequiredMixin, generic.DeleteView):
+class ApagarEstadia(AdminPermission, LoginRequiredMixin, generic.DeleteView):
     model = estadia
     success_url = reverse_lazy("filomenas:listar_filo")
     success_message = "Estadia removida com sucesso!"
@@ -120,7 +121,7 @@ class Atualizarhospede(LoginRequiredMixin, views.SuccessMessageMixin, generic.Up
     success_url = reverse_lazy("filomenas:listar_hospede")
     success_message = "Perfil atualizado com sucesso"
 
-class Apagarhospede(LoginRequiredMixin, generic.DeleteView):
+class Apagarhospede(AdminPermission, LoginRequiredMixin, generic.DeleteView):
     model = hospede
     success_url = reverse_lazy("filomenas:home")
   
@@ -142,30 +143,24 @@ class Criarfilomena(views.SuccessMessageMixin, generic.CreateView):
     model = filomenas
     form_class = FilomenasForm
     template_name = 'filomenas/form.html'
-    success_url = reverse_lazy("filomenas:home2")
+    success_url = reverse_lazy("filomenas:listar_filomena")
     success_message = "filomena cadastrada com sucesso!"
 
 class CriarEstadia(LoginRequiredMixin, views.SuccessMessageMixin, generic.CreateView):
     model = estadia
     form_class = EstadiaForm
     template_name = 'estadia/form.html'
-    success_url = reverse_lazy("filomenas:home")
+    success_url = reverse_lazy("filomenas:listar_filo")
     success_message = "Estadia cadastrada com sucesso!"
 
-class Atualizarfilomena( LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
+class Atualizarfilomena(AdminPermission, LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
     model = filomenas
     form_class = FilomenasForm
     template_name = 'filomenas/form.html'
     success_url = reverse_lazy("filomenas:listar_filomena")
     success_message = "Perfil atualizado com sucesso, {{ request.user.username }}!" 
 
-class Apagarfilomena( LoginRequiredMixin, generic.DeleteView):
-    template_name = "filomenas/apagar.html"
+class Apagarfilomena(AdminPermission, LoginRequiredMixin, generic.DeleteView):
     success_message = "Filomena removida com sucesso!"
     model = filomenas
-    success_url = reverse_lazy("filomenas:home2")
-
-class Apagarfilomena( LoginRequiredMixin, generic.DeleteView):
-    model = filomenas
-    success_message = "Filomena removida com sucesso!"
-    success_url = reverse_lazy("filomenas:home2")
+    success_url = reverse_lazy("filomenas:listar_filomena")
