@@ -1,12 +1,6 @@
-{% extends 'base_logada.html' %}
-{% load static %}
-
-
-
-{% block body %}
-<form action="{% url 'filomenas:apagar_filomena' filomena.pk %}" method="post">
+<form action="{% url 'filomenas:apagar_estadia' estadia.pk %}" method="post">
     {% csrf_token %}
-    <div class="modal fade" id="exampleModal-{{ filomena.pk }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal-{{ estadia.pk }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -14,7 +8,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            Deseja excluir o registro a reserva de {{ filomena.nome }}?
+            Deseja excluir o registro a reserva de {{ estadia.nome_estadia}}?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -24,5 +18,3 @@
     </div>
   </div>
   </form>
-
-{% endblock %}

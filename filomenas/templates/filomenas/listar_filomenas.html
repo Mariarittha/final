@@ -36,7 +36,7 @@
             <div class="card" style="width: 18rem;">
               <img src="{{ filomena.imagem_filo.url }}" alt="Imagem da Estadia" >
               <div class="card-body">
-                <h5 class="card-title text-orangee">Nome da Estadia: <strong>{{ filomena.nome }}</strong></h5>
+                <h5 class="card-title text-orangee">Filomena: <strong>{{ filomena.nome }}</strong></h5>
                 <p class="card-text">Nome: {{ filomena.nome }}</p>
                 <p class="card-text">Idade: {{ filomena.idade }}</p>
                 <p class="card-text">Telefone: {{ filomena.telefone }}</p>
@@ -162,6 +162,8 @@
                                 </svg>
                             </a>
                            
+
+                            
                             <!-- Botão que aciona o modal -->
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ filomena.pk }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
@@ -233,5 +235,11 @@
         </div>
     </div>
 </div>
+<script>
+    var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+      keyboard: false
+    });
+  </script>
+  
 
 {% endblock %}

@@ -2,9 +2,10 @@ from django.contrib import messages
 from django.views import generic
 from django.views.generic import ListView,CreateView,DeleteView,DetailView, UpdateView,TemplateView
 from django.urls import reverse_lazy
+from django_filters.views import FilterView
+from .filter import EstadiaFilter
 from django.contrib.messages import views
 from django.contrib.auth.mixins import LoginRequiredMixin
-from requests import request
 from .forms import EstadiaForm, ProdutosForm, HospedeForm, FilomenasForm
 from .models import estadia, Produtos, filomenas, hospede
 from users.permissions import AdministradorPermission
@@ -31,16 +32,18 @@ class forms(generic.TemplateView):
 #                                                                        CRUDS
 
 # CRUD de Estadia
-class ListarEstadia(LoginRequiredMixin, generic.ListView):
+class ListarEstadia(LoginRequiredMixin, generic.ListView, FilterView):
     model = estadia
     template_name = 'estadia/listar.html'
     context_object_name = 'estadias'
+    filterset_class = EstadiaFilter
     paginate_by = 2
 
-class ListarEstadiafilo(LoginRequiredMixin, generic.ListView):
+class ListarEstadiafilo(LoginRequiredMixin, generic.ListView, FilterView):
     model = estadia
     template_name = 'filomenas/listar_estadia.html'
     context_object_name = 'estadias'
+    filterset_class = EstadiaFilter
     paginate_by = 2
     
 class ListarEstadianao( generic.ListView):
@@ -84,7 +87,6 @@ class ApagarEstadia(LoginRequiredMixin, generic.DeleteView):
     model = estadia
     success_url = reverse_lazy("filomenas:listar_filo")
     success_message = "Estadia removida com sucesso!"
-    template_name = "estadia/apagar.html" 
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>....
     
