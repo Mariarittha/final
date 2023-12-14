@@ -2,8 +2,6 @@
 {% load i18n %}
 {% load static %}
 
-
-
 {% block body %}
 <style>
     .text-orange {
@@ -19,80 +17,120 @@
         color: #E28743;
     }
 </style>
-    
-  <!-- {% if messages %}
-    {% for message in messages %}
-      <div{% if message.tags %} class="{{ message.tags }} p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3 m-4 text-center"{% endif %}>
-        {{ message }}
-      </div>
-    {% endfor %}
-  {% endif %} -->
-  <img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 30px;" />
 
+<img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 30px;" />
 
-  <form method="GET" action="{% url 'filomenas:listar_log' %}" autocomplete="off">
+<form method="GET" action="{% url 'filomenas:listar_log' %}" autocomplete="off">
     <section class="form container-fluid p-5x">
-        <div class="row">
-            <div class="col-12 mx-0 mt-3">
-                <p>{% translate "Filtros" %}</p>
-                <span class="br-divider sm mt-3"></span>
-            </div>
-            <div class="col-12 mx-0 mt-3">
-                <div class="br-input input-inline">
-                    <div class="input-content">
-                        <div class="input-group">
-                            {{ filter.form.valor.label_tag }}
-                            {{ filter.form.valor }}
+        <!-- Seu formulário de filtro aqui -->
+    </section>
+</form>
+
+<div class="container text-center">
+    <div class="row row-cols-2 mt-3">
+        {% for estadia in estadias %}
+            <div class="col-md-4">
+                <div class="m-5">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ estadia.imagem.url }}" alt="Imagem da Estadia" >
+                        <div class="card-body">
+                            <h5 class="card-title text-orangee">Nome da Estadia: <strong>{{ estadia.nome_estadia }}</strong></h5>
+                            <p class="card-text">Descrição: {{ estadia.descricao_estadia }}</p>
+                            <a href="{% url 'filomenas:detalhar_log' pk=estadia.pk %}" class="btn text-orange">Reservar</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-12 mx-0 mt-3">
-                <button class="br-button primary rounder-md flex-grow-1 mb-1" type="submit" name="filtrar">
-                    <i class="fa fa-filter"></i>
-                    {% translate "Filtrar" %}
-                </button>
+        {% empty %}
+            <div class="col-md-12">
+                <p class="text-h1">Não existem estadias cadastradas.</p>
             </div>
-        </div>
-    </section>
-</form>
-
-  <div class="container text-center">
-    <div class="row row-cols-2 mt-3">
-      {% for estadia in estadias %}
-        <div class="col-md-4">
-          <div class="m-5">
-            <div class="card" style="width: 18rem;">
-              <img src="{{ estadia.imagem.url }}" alt="Imagem da Estadia" >
-              <div class="card-body">
-                <h5 class="card-title text-orangee">Nome da Estadia: <strong>{{ estadia.nome_estadia }}</strong></h5>
-                <p class="card-text">Descrição: {{ estadia.descricao_estadia }}</p>
-                <a href="{% url 'filomenas:detalhar_log' pk=estadia.pk %}" class="btn text-orange">comprar</a>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      {% empty %}
-        <div class="col-md-12">
-          <p class="text-h1">Não existem estadias cadastradas.</p>
-        </div>
-      {% endfor %}
+        {% endfor %}
     </div>
-  </div>
+</div>
 
-  <div class="container text-center">
-    <div class="row">
+
+<style>
+  .pagination-container {
+      margin-top: 20px;
+  }
+
+  .pagination {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+  }
+
+  .page-item {
+      margin: 0 5px;
+  }
+
+  .page-link {
+      color: #E28743;
+      background-color: #fff;
+      border: 1px solid #E28743;
+  }
+
+  .page-link:hover,
+  .page-link:focus {
+      color: #fff;
+      background-color: #E28743;
+      border: 1px solid #E28743;
+  }
+
+  .page-item.active .page-link {
+      z-index: 3;
+      color: #fff;
+      background-color: #E28743;
+      border: 1px solid #E28743;
+  }
+</style>
+
+
+
+<div class="container text-center">
+  <div class="row">
       <div class="col"></div>
       <div class="col">
-        <div class="w3-bar">
-          <!-- Código de paginação -->
-          <!-- ... -->
-        </div>
+          <div class="pagination-container">
+              <ul class="pagination">
+                  {% if page_obj.has_previous %}
+                      <li class="page-item">
+                          <a class="page-link" href="?page=1&search={{ request.GET.search }}" aria-label="First">
+                              <span aria-hidden="true">&laquo;&laquo;</span>
+                          </a>
+                      </li>
+                      <li class="page-item">
+                          <a class="page-link" href="?page={{ page_obj.previous_page_number }}&search={{ request.GET.search }}" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                          </a>
+                      </li>
+                  {% endif %}
+
+                  {% for pg in page_obj.paginator.page_range %}
+                      <li class="page-item {% if page_obj.number == pg %}active{% endif %}">
+                          <a class="page-link" href="?page={{ pg }}&search={{ request.GET.search }}">{{ pg }}</a>
+                      </li>
+                  {% endfor %}
+
+                  {% if page_obj.has_next %}
+                      <li class="page-item">
+                          <a class="page-link" href="?page={{ page_obj.next_page_number }}&search={{ request.GET.search }}" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                          </a>
+                      </li>
+                      <li class="page-item">
+                          <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}&search={{ request.GET.search }}" aria-label="Last">
+                              <span aria-hidden="true">&raquo;&raquo;</span>
+                          </a>
+                      </li>
+                  {% endif %}
+              </ul>
+          </div>
       </div>
       <div class="col"></div>
-    </div>
   </div>
+</div>
+
 
 {% endblock body %}
-    

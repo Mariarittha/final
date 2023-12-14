@@ -125,6 +125,90 @@
     }
 </style>
 
+
+<style>
+    .pagination-container {
+        margin-top: 20px;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+    }
+
+    .page-item {
+        margin: 0 5px;
+    }
+
+    .page-link {
+        color: #E28743;
+        background-color: #fff;
+        border: 1px solid #E28743;
+    }
+
+    .page-link:hover,
+    .page-link:focus {
+        color: #fff;
+        background-color: #E28743;
+        border: 1px solid #E28743;
+    }
+
+    .page-item.active .page-link {
+        z-index: 3;
+        color: #fff;
+        background-color: #E28743;
+        border: 1px solid #E28743;
+    }
+</style>
+
+
+
+  <div class="container text-center">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <div class="pagination-container">
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1&search={{ request.GET.search }}" aria-label="First">
+                                <span aria-hidden="true">&laquo;&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}&search={{ request.GET.search }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+
+                    {% for pg in page_obj.paginator.page_range %}
+                        <li class="page-item {% if page_obj.number == pg %}active{% endif %}">
+                            <a class="page-link" href="?page={{ pg }}&search={{ request.GET.search }}">{{ pg }}</a>
+                        </li>
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}&search={{ request.GET.search }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}&search={{ request.GET.search }}" aria-label="Last">
+                                <span aria-hidden="true">&raquo;&raquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+<br><br>
+
 <img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 20px;" />
 <h2 class="text-center text-orangee ">PAINEL</h2>
 <div class="container mt-5">

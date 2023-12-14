@@ -37,20 +37,20 @@ class ListarEstadia(LoginRequiredMixin, generic.ListView, FilterView):
     template_name = 'estadia/listar.html'
     context_object_name = 'estadias'
     filterset_class = EstadiaFilter
-    paginate_by = 2
+    paginate_by = 3
 
 class ListarEstadiafilo(LoginRequiredMixin, generic.ListView, FilterView):
     model = estadia
     template_name = 'filomenas/listar_estadia.html'
     context_object_name = 'estadias'
     filterset_class = EstadiaFilter
-    paginate_by = 2
+    paginate_by = 3
     
 class ListarEstadianao( generic.ListView):
     model = estadia
     template_name = 'estadia/listar_nao.html'
     context_object_name = 'estadias'
-    paginate_by = 2
+    paginate_by = 3
 
 class Detalharestadialog(generic.DetailView):
     model = estadia

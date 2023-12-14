@@ -1,6 +1,6 @@
 <form action="{% url 'filomenas:apagar_estadia' estadia.pk %}" method="post">
   {% csrf_token %}
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal-{{ estadia.pk }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,7 +8,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-          Deseja excluir {{ estadia.nome_estadia }}?
+          Deseja excluir o registro {{ estadia }}?
+          {{ estadia.pk }}
           {{ form }}
       </div>
       <div class="modal-footer">
@@ -19,3 +20,4 @@
   </div>
 </div>
 </form>
+
